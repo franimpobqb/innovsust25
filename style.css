@@ -1,0 +1,328 @@
+/* Basic reset */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Figtree', sans-serif;
+}
+
+/* 1. Make the <html> element static */
+html {
+    overflow: hidden;
+}
+
+/* 2. Make the <body> the scroll container */
+body {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+/* 3. Define the sections */
+.page {
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-behavior: smooth;
+    position: relative;
+    top: 0;
+    padding: 5vw;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.page img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    object-fit: cover;
+}
+
+.page .text {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    width: 90%;
+}
+
+.page#portal {
+    align-items: center;
+}
+
+.page#china:before,
+.page#flota:before {
+    z-index: 1;
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(203.95deg, rgba(0, 0, 0, 0) 58.13%, rgba(0, 0, 0, 0.2) 73.86%);
+}
+
+
+
+/* * 4. Set background colors AND z-index for stacking.
+ * A higher z-index means it's "on top".
+ */
+
+#hero {
+    width: 100%;
+    height: 100dvh;
+    background-color: #444;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#hero.page {
+    scroll-snap-align: inherit;
+    position: relative;
+}
+
+#hero.page .text {
+    max-width: 850px;
+}
+
+#hero.page h1 {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    
+    letter-spacing: .1rem;
+}
+
+.page h2 {
+    font-weight: 400;
+    font-size: 3rem;
+}
+
+#hero #bgVideo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+}
+
+#hero:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000054;
+}
+
+#hero .container {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+
+h1 {
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+button.btn-primary {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    border-radius: 34px;
+    padding: 16px 32px;
+    background-color: var(--btn-dark-color, #018FBF);
+    border-color: var(--btn-dark-color, #018FBF);
+    color: #fff;
+    border: none;
+    outline: none;
+    transition: all .2s ease;
+}
+
+button.btn-primary:hover {
+    background-color: #076F92;
+}
+
+/* The hidden checkbox that controls the menu on small screens */
+.menu-toggle{position:absolute;opacity:0;pointer-events:none;}
+
+
+/* Hamburger button (label for the checkbox) */
+.hamburger{
+display:inline-grid;align-items:center;grid-gap:4px;cursor:pointer;padding:.5rem;border-radius:8px;
+width:44px;height:44px;place-items:center
+}
+.hamburger:focus{outline:2px solid Highlight;outline-offset:2px}
+.hamburger .bar{display:block;width:22px;height:2px;border-radius:2px;background:#111;transform-origin:center;transition:transform .25s ease,opacity .2s ease}
+
+
+/* Navigation links */
+nav.primary{display:flex;gap:1rem;align-items:center}
+nav.primary ul{display:flex;gap:0.5rem;list-style:none}
+nav.primary li a{display:inline-block;padding:.5rem .75rem;border-radius:6px}
+nav.primary li a:hover, nav.primary li a:focus{background:rgba(0,0,0,.06)}
+
+
+/* Desktop-first: show nav, hide hamburger */
+.hamburger{display:none}
+
+
+/* Responsive: on small viewports hide the nav by default and show hamburger */
+@media (max-width: 768px){
+.hamburger{display:inline-grid}
+nav.primary{position:fixed;inset:60px 12px auto 12px;background:#fff;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.12);flex-direction:column;padding:12px;gap:6px;max-height:0;overflow:hidden;transition:max-height .28s ease,opacity .2s ease;opacity:0}
+nav.primary ul{flex-direction:column}
+
+
+/* When checkbox is checked, expand nav */
+.menu-toggle:checked + .hamburger + nav.primary{max-height:420px;opacity:1}
+
+
+/* Animate hamburger into X when open */
+.menu-toggle:checked + .hamburger .bar:nth-child(1){transform:translateY(0px) rotate(45deg)}
+.menu-toggle:checked + .hamburger .bar:nth-child(2){opacity:0;transform:scaleX(.8)}
+.menu-toggle:checked + .hamburger .bar:nth-child(3){transform:translateY(0px) rotate(-45deg)}
+
+
+/* Make header stickier and give space for fixed menu */
+.site-header{position:relative;z-index:30}
+}
+
+
+/* Small polish: ensure links large enough on touch devices */
+nav.primary li a{min-width:120px}
+
+.banner-largo {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.banner-largo .container {
+    z-index: 3;
+    position: relative;
+    color: #fff;
+}
+
+.banner-largo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.banner-largo:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-color: #00000052;
+}
+
+.china-features .item {
+    margin-bottom: 3rem;
+}
+
+.china-features .items-text {
+    position: sticky;
+    top: 0;
+    font-size: 1.6rem;
+}
+
+.china-features .item h4 {
+    font-weight: 300;
+    color: navy;
+    margin-bottom: 1.5rem;
+}
+
+.china-features .item ul li {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: .25rem;
+}
+
+.china-features .item ul {
+    padding: 0;
+}
+
+/* --- Mobile View --- */
+@media (max-width: 768px) {
+
+    /* Show the hamburger icon */
+    .nav-toggle-label {
+        display: block;
+    }
+
+    /* Hide the navigation menu by default */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        /* Position below navbar */
+        left: 0;
+        width: 100%;
+        background-color: #333;
+    }
+
+    /* Make menu items stack vertically */
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu li {
+        text-align: center;
+        margin: 0;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 1rem;
+    }
+
+
+    /* * THE HACK: 
+     * When the checkbox is checked, show the .nav-menu
+     * that is its sibling.
+    */
+    .nav-toggle:checked~.nav-menu {
+        display: block;
+    }
+
+    #hero.page .text {
+        max-width: 100%;
+    }
+
+    #hero.page h1 {
+        font-size: 1rem;
+    }
+
+  .page h2 {
+        font-size: 2rem;
+    }
+
+    .banner-largo {
+        height: 350px;
+    }
+
+    .page {
+        padding:  5vw 0;
+    }
+}
