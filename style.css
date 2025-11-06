@@ -28,7 +28,6 @@ body {
     position: relative;
     top: 0;
     padding: 5vw;
-
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
@@ -71,37 +70,13 @@ body {
  * A higher z-index means it's "on top".
  */
 
-#hero {
-    width: 100%;
-    height: 100dvh;
-    background-color: #444;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-#hero.page {
-    scroll-snap-align: inherit;
-    position: relative;
-}
-
-#hero.page .text {
-    max-width: 850px;
-}
-
-#hero.page h1 {
-    text-transform: uppercase;
-    font-size: 1.2rem;
-    
-    letter-spacing: .1rem;
-}
 
 .page h2 {
     font-weight: 400;
     font-size: 3rem;
 }
 
-#hero #bgVideo {
+.page #bgVideo {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -111,7 +86,7 @@ body {
 
 }
 
-#hero:after {
+.page:after {
     content: "";
     position: absolute;
     z-index: 1;
@@ -121,17 +96,13 @@ body {
     background-color: #00000054;
 }
 
-#hero .container {
+.page .container {
     position: relative;
     z-index: 2;
     color: #fff;
 }
 
 
-h1 {
-    color: #333;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
 
 button.btn-primary {
     font-size: 18px;
@@ -306,11 +277,11 @@ nav.primary li a{min-width:120px}
         display: block;
     }
 
-    #hero.page .text {
+    #slides.page .text {
         max-width: 100%;
     }
 
-    #hero.page h1 {
+    #slides.page h1 {
         font-size: 1rem;
     }
 
